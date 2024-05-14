@@ -2,45 +2,48 @@ import { useEffect, useState } from "react";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { useGetSearchJob } from "./HomeAPI/useGetSearchJob";
 import { LoadingPage } from "../../UI/LoadingPage";
+import { useQueryClient } from "@tanstack/react-query";
+import { JobCard } from "./HomeUI/JobCard";
+import { SearchJobHome } from "./SearchJobHome";
 
 export const SearchPageHome = () => {
+  const queryClient = useQueryClient();
     const [searchParams, setSearchParams] = useSearchParams();
-  const [provinceName, setProvinceName] = useState('')
-  const [minSalary, setMinSalary] = useState(0);
-  const [maxSalary, setMaxSalary] = useState(0);
-  const [experience, setExperience] = useState(0)
-  const [industry, setIndustry] = useState(0)
-  const [searchKey, setSearchKey] = useState("")
-  const [form, setForm] = useState({})
+  // const [provinceName, setProvinceName] = useState('')
+  // const [minSalary, setMinSalary] = useState(0);
+  // const [maxSalary, setMaxSalary] = useState(0);
+  // const [experience, setExperience] = useState(0)
+  // const [industry, setIndustry] = useState(0)
+  // const [searchKey, setSearchKey] = useState("")
   const location = useLocation();
-  const {listJobs, isLoading} = useGetSearchJob(form)
+  const {listJobs, isLoading} = useGetSearchJob({
+      industry: searchParams.get('industryParam'),
+      location: searchParams.get('provinceParam'),
+      experience: searchParams.get('experienceParam') ? searchParams.get('experienceParam') : -1,
+      minSalary: searchParams.get('minSalaryParam'),
+      maxSalary: searchParams.get('maxSalaryParam'),
+      searchValue: searchParams.get('searchKeyParam'),
+      typeJob: searchParams.get("typeParam") === -1 ? 0 : searchParams.get("typeParam")
+    })
   
 
     const [path, setPath] = useState("")
     useEffect(() => {
         setPath(location.pathname)
         if(path === "/search-page"){
-          setProvinceName(searchParams.get('provinceParam'))
-          setExperience(searchParams.get('experienceParam'))
-          setMinSalary(searchParams.get('minSalaryParam'))
-          setMaxSalary(searchParams.get('maxSalaryParam'))
-          setSearchKey(searchParams.get('searchKeyParam'))
-          setIndustry(searchParams.get('industryParam'))
-
-          const formData = new FormData()
-          formData.append('industryId',industry)
-          formData.append('location', provinceName)
-          formData.append('minSalary', minSalary)
-          formData.append('maxSalary', maxSalary)
-          formData.append('searchValue', searchKey)
-          setForm(formData)
+          queryClient.invalidateQueries({
+            queryKey: ["listJobResult"]
+          })
         }
-      }, [industry,location.pathname,maxSalary,minSalary,searchKey,provinceName,path,searchParams]);
+      }, [location,location.pathname,path,searchParams, queryClient]);
       if(isLoading) return <LoadingPage/>
     return(
         <>
-        {console.log(listJobs)}
-            a
+        <SearchJobHome/>
+        {listJobs?.data.map(
+          (job) => <JobCard job={job} key={job.jobId}/>
+        )
+        }
         </>
     )
 } 

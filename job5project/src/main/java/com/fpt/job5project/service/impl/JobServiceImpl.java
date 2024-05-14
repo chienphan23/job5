@@ -78,9 +78,9 @@ public class JobServiceImpl implements IJobService {
     }
 
     @Override
-    public List<JobDTO> resultSearchJob(long industryId, String searchValue, long minSalary, long maxSalary, String location) {
+    public List<JobDTO> resultSearchJob(long industryId, String searchValue, long minSalary, long maxSalary, String location, int experience, int typeJob) {
         List<JobDTO> listDTO = new ArrayList<>();
-        List<Job> listEntity = jobRepository.resultSearch(industryId, searchValue, minSalary, maxSalary, location);
+        List<Job> listEntity = jobRepository.resultSearch(industryId, searchValue, minSalary, maxSalary, location, experience, typeJob);
         for (Job a : listEntity) {
             listDTO.add(jobMapper.toDTO(a));
         }

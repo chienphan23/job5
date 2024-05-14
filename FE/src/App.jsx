@@ -55,6 +55,8 @@ function App() {
           </Route>
           <Route element={<LayoutCommon/>}>
             <Route path='/home' element={<Home/>}/>
+            <Route path='/search-page' element={<SearchPageHome/>}/>
+
           </Route>
           <Route element={<HomeLayout/>}>
             {/* <Route path='/editcandidateprofile/:id' element={<EditProfile/>}/>
@@ -71,7 +73,6 @@ function App() {
             <Route path='/createjob' element={<CreateJob/>}/>
             <Route path='/editjob/:idJob' element={<EditJob/>}/>
             <Route path='/home/:idSearch' element={<SearchResult/>}/>
-            <Route path='/search-page' element={<SearchPageHome/>}/>
           </Route>
 
           <Route element={<EmployerLayout />}>

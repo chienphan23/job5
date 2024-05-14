@@ -103,7 +103,7 @@ export const Register = () => {
     formData2.append("address", address);
     formData2.append("provinceName", provinceName)
     if(isCandidate){
-        formData2.append("candidateName", name)
+        formData2.append("fullName", name)
         formData2.append("birthDate", formatDate(birthDay))
       }else{
         formData2.append('location', provinceName)

@@ -16,6 +16,6 @@ public interface IJobService {
     public List<JobDTO> getTopJobForHome(int numJob);
     public List<JobDTO> getJobByEmployer(long employerId);
 
-    public List<JobDTO> resultSearchJob(long industryId, String searchValue, long minSalary, long maxSalary, String location);
+    public List<JobDTO> resultSearchJob(long industryId, String searchValue, long minSalary, long maxSalary, String location, int experience, int typeJob);
 
 }

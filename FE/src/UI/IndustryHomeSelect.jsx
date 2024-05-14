@@ -29,9 +29,9 @@ export const IndustryHomeSelect = ({ listIndustry, industry, setIndustry }) => {
                     className="form-control padding-select outline-input border-select text-center"
                     id="exampleFormControlSelect1"
                     onChange={e => handleAddArrayIndustrys(e)}
-                    value={industry ? industry : "-1"}
+                    value={industry ? industry : 0}
                 >
-                    <option key={"-1"}>Chọn Ngành nghề liên quan</option>
+                    <option key={"0"} value={0}>Chọn Ngành nghề liên quan</option>
                     {listIndustry.data.map((i) =>
                         <option key={i.industryId} value={i.industryId}>{i.industryName}</option>
                     )}

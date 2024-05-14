@@ -35,8 +35,8 @@ export const ProvinceNameSelect = ({ provinceName, setProvinceName, errorProvinc
                     Chọn thành phố
                 </option>
                 
-                {path !== "/register" ?
-                    <option value={''}>Tất cả thành phố</option> : null
+                {path !== "/register" && path !== '/createjob' ?
+                    <option value={'0'}>Tất cả thành phố</option> : null
                 }
                 {listProvince.data.map((i, index) => (
                     <option key={i.provinceName} value={i.provinceName}>

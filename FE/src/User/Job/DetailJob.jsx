@@ -24,11 +24,11 @@ export const DetailJob = () => {
         {console.log(employerOfJob)}
         <div className="default-background pb-5">
             <div className="container" >
-                <div className="row mb-4 default-background">
-                    <div className="col-lg-8 default-background" >
-                        <div className="border-main white-background" style={{padding: "20px 24px"}}>
-                        <div >
-                            <h3>{job?.data.jobName}</h3>
+                <div className="row mb-4 default-background ">
+                    <div className="col-lg-8 default-background " >
+                        <div className="border-main white-background " style={{padding: "20px 24px"}}>
+                        <div  >
+                            <h3 className="line-clamp" >{job?.data.jobName}</h3>
                         </div>
 
                         <div className="row mt-4">

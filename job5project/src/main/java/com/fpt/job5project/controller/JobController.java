@@ -79,7 +79,7 @@ public class JobController {
     @PostMapping("/searchJob")
     public ResponseObject<List<JobDTO>> resultSearchJob(@ModelAttribute SearchJobDTO searchJobDTO) {
         ResponseObject<List<JobDTO>> responseObject = new ResponseObject<>();
-        responseObject.setData(iJobService.resultSearchJob(searchJobDTO.getIndustryId(), searchJobDTO.getSearchValue(),searchJobDTO.getMinSalary(),searchJobDTO.getMaxSalary(),searchJobDTO.getLocation()));
+        responseObject.setData(iJobService.resultSearchJob(searchJobDTO.getIndustryId(), searchJobDTO.getSearchValue(),searchJobDTO.getMinSalary(),searchJobDTO.getMaxSalary(),searchJobDTO.getLocation(), searchJobDTO.getExperience(), searchJobDTO.getTypeJob()));
         return responseObject;
     }
 }
