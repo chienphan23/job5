@@ -2,10 +2,10 @@ import { useQuery } from "@tanstack/react-query"
 import { apiGetTopJobForHome } from "./apiGetTopJobForHome"
 import { apiSearchJob } from "./apiSearchJob"
 
-export const useGetSearchJob = ({industry, location, experience, minSalary, maxSalary, searchValue, typeJob}) => {
+export const useGetSearchJob = (formData) => {
     const {data: listJobs, isLoading, error} = useQuery({
         queryKey: ['listJobResult'],
-        queryFn: async () => await apiSearchJob(industry, location, experience, minSalary, maxSalary, searchValue, typeJob)
+        queryFn: () => apiSearchJob(formData)
     })
     return {listJobs, isLoading, error}
 }

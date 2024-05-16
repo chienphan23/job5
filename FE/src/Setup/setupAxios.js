@@ -46,9 +46,6 @@ const instance = axios.create({
         window.location.pathname = "/login"
       }
     }
-    // if(error.status === 1006 ){
-    //   window.location.pathname = "/login"
-    // }
     return Promise.reject(error);
   });
  

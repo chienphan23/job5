@@ -6,7 +6,7 @@ const apiPostLogOut = async () => {
   const jwt = Cookies.get("AUTH_TOKEN");
   formData.append("token", jwt);
   const result = await axios.post(
-    "http://localhost:8080/auth/logout",
+    "http://localhost:8080/api/auth/logout",
     formData
   );
   if (result !== null) {

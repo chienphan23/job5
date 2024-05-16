@@ -1,21 +1,22 @@
 package com.fpt.job5project.service.impl;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.fpt.job5project.dto.EmployerReviewDTO;
-import com.fpt.job5project.entity.Application;
 import com.fpt.job5project.entity.EmployerReview;
 import com.fpt.job5project.exception.AppException;
 import com.fpt.job5project.exception.ErrorCode;
 import com.fpt.job5project.mapper.EmployerReviewMapper;
 import com.fpt.job5project.repository.EmployerReviewRepository;
 import com.fpt.job5project.service.IEmployerReviewService;
+
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -54,7 +55,8 @@ public class EmployerReviewService implements IEmployerReviewService {
 
     @Override
     public EmployerReviewDTO updateEmployerReview(long id, EmployerReviewDTO employerReviewDTO) {
-        EmployerReview foundEmployerReview = employerReviewRepository.findById(id).orElseThrow(() -> new AppException(ErrorCode.CV_NOT_EXIST));
+        EmployerReview foundEmployerReview = employerReviewRepository.findById(id)
+                .orElseThrow(() -> new AppException(ErrorCode.CV_NOT_EXIST));
         if (foundEmployerReview != null) {
             employerReviewMapper.updateEmployerReview(foundEmployerReview, employerReviewDTO);
         }

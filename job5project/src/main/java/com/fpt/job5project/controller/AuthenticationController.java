@@ -4,7 +4,6 @@ import java.text.ParseException;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -60,8 +59,6 @@ public class AuthenticationController {
     @PostMapping("/refresh")
     ResponseObject<AuthenticationDTO> authenticate(@ModelAttribute RefreshDTO request)
             throws ParseException, JOSEException {
-        System.out.println("123");
-        System.out.println("alo"+ request.getToken());
         var result = authenticationService.refreshToken(request);
         return ResponseObject.<AuthenticationDTO>builder()
                 .data(result)

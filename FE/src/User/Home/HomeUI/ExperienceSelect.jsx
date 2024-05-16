@@ -16,13 +16,18 @@ export const ExperienceSelect = ({ experience, setExperience }) => {
                 name="selectExperience"
                 
             >
-                <option key={"-1"} value={-1} disabled selected>
+                <option key={"-1"} value={"-1"} disabled selected>
                     Chọn kinh nghiệm
                 </option>
+<<<<<<< HEAD
                   <option value={-2}>Tất cả kinh nghiệm</option>
                   {/* nếu là 6 => năm kinh nghiệm = 0 */}
                   <option value={6}>Chưa có kinh nghiệm</option>
                   <option value={1}>1 năm</option>
+=======
+                  <option value={0}>Tất cả kinh nghiệm</option>
+                  <option value={1}>Dưới 1 năm</option>
+>>>>>>> cb8abfcd526acec9924c808f0c58d2f994662a1f
                   <option value={2}>2 năm</option>
                   <option value={3}>3 năm</option>
                   <option value={4}>4 năm</option>

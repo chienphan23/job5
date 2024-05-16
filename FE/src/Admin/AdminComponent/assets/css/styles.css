@@ -713,6 +713,7 @@ ul.breadcrumbs {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     border: 2px solid #efefef;
+    background: #eaecf0;
     padding: 17px 38px;
     position: relative;
 }
@@ -792,8 +793,9 @@ ul.breadcrumbs {
 }
 
 .user-profile .dropdown-menu a:hover {
-    background: #f8f9fa;
-    color: #2942fa;
+    background:  #1682b6;
+    color: white;
+    border-radius: 3px;
 }
 
 /*-------------------- END Page Title Area -------------------*/

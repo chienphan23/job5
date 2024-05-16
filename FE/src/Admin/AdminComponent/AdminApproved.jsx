@@ -6,6 +6,13 @@ import { useGetEmployerApproved } from "../AdminAPI/use/useGetEmployerApproved";
 import { apiAcceptEmployer } from "../AdminAPI/apiAcceptEmployer";
 import { useNotAcceptEmployer } from "../AdminAPI/use/useNotAcceptEmployer";
 import { useAcceptEmployer } from "../AdminAPI/use/useAcceptEmployer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCheck,
+  faPen,
+  faRemove,
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
 
 const TextField = styled.input`
   height: 32px;
@@ -106,7 +113,7 @@ export const AdminApproved = () => {
     {
       name: "Trạng thái",
       selector: (row) => (
-        <span className="text-color-warning">Đang chờ duyệt</span>
+        <span className="badge badge-pill badge-warning">Chờ Duyệt</span>
       ),
     },
 
@@ -115,18 +122,18 @@ export const AdminApproved = () => {
       cell: (row) => (
         <>
           <button
-            className="btn btn-danger"
+            className="btn btn-outline-danger"
             style={{ marginLeft: "10px" }}
             onClick={() => handleDelete(row.employerId)}
           >
-            <i className="ti-trash"></i>
+            <FontAwesomeIcon icon={faRemove} />
           </button>
           <button
-            className="btn btn-info"
+            className="btn btn-outline-primary"
             style={{ marginLeft: "10px" }}
             onClick={() => handlAcceptEmployer(row.employerId)}
           >
-            <i className="ti-check"></i>
+            <FontAwesomeIcon icon={faCheck} />
           </button>
         </>
       ),
@@ -138,7 +145,8 @@ export const AdminApproved = () => {
     React.useState(false);
   const filteredItems = data
     ? data.data.filter((item) => {
-        const textMatch = item?.employerName?.toLowerCase()
+        const textMatch = item.employerName
+          .toLowerCase()
           .includes(filterText.toLowerCase());
 
         return textMatch;
