@@ -24,7 +24,7 @@ export const JobTypeSelect = ({ type, setType }) => {
                     
                         <option key={0} value={0}>Tất cả hình thức</option>
                         <option key={"1"} value={1}>Việc làm bán thời gian</option>
-                        <option key={"1"} value={2}>Việc làm toàn thời gian</option>
+                        <option key={"2"} value={2}>Việc làm toàn thời gian</option>
                 </select>
             </div>
             

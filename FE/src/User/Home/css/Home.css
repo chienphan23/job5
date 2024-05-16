@@ -110,7 +110,7 @@ button.main-background:hover{
 }
 
 .card-hover:hover {
-  border: 0.5px solid #7ed9e7;
+  outline: 0.5px solid #7ed9e7;
   /* background-color: rgba(248, 250, 250, 0.5) !important; */
   
 }

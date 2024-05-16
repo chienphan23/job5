@@ -40,8 +40,10 @@ export const SearchPageHome = () => {
     return(
         <>
         <SearchJobHome/>
+        {console.log(listJobs)}
         {listJobs?.data.map(
-          (job) => <JobCard job={job} key={job.jobId}/>
+          (job) => 
+          <div style={{marginBottom: "50px"}}><JobCard job={job} key={job.jobId}/></div>
         )
         }
         </>

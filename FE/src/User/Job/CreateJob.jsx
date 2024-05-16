@@ -124,7 +124,6 @@ export const CreateJob = () => {
     }, [user,rank,isLoadingRank, isLoadingUser])
     return(
         <>
-        {console.log(rank)}
             <div className="default-background pb-5">
             <div className="container" >
                 <form onSubmit={(e) => handleSubmit(e)}>
@@ -207,7 +206,7 @@ export const CreateJob = () => {
                     </div>
                     
                     <JobInformation label={"Mô tả công việc"} inputValue={jobDescription} onChangeFns={handleDescriptionChange}/>
-                    <JobInformation label={"Yêu cần ứng viên"} inputValue={jobRequirement} onChangeFns={handleRequirementChange}/>
+                    <JobInformation label={"Yêu cầu ứng viên"} inputValue={jobRequirement} onChangeFns={handleRequirementChange}/>
                     <JobInformation label={"Lợi ích"} inputValue={jobBenefit} onChangeFns={handleBenefitChange}/>
                     
 

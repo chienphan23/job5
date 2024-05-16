@@ -57,7 +57,6 @@ export const IndustrySelectEditJob = ({ arrayIndustryId, setArrayIndustryId, arr
     }
     return (
         <>
-        {console.log(arrayIndustryId)}
             <div className="form-group">
                 <select key={"selectIndustry"}
                     className="form-control padding-select outline-input border-select text-center"

@@ -87,7 +87,6 @@ export const Register = () => {
 
     const formData = new FormData();
     formData.append("userName", userName);
-    console.log(password)
     formData.append("password", password);
     if(isCandidate){
         formData.append("role", "candidate");

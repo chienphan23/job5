@@ -2,20 +2,24 @@ package com.fpt.job5project.Model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity
-public class JobsIndustries {
-    @Id
+//@Entity
+//@IdClass(JobsIndustriesId.class)
+public class JobsIndustries implements Serializable {
+//    @Id
     private long industries_industryid;
-
+//    @Id
     private long job_jobid;
 
 }

@@ -4,7 +4,7 @@ import com.fpt.job5project.dto.IndustryDTO;
 import com.fpt.job5project.dto.JobDTO;
 import com.fpt.job5project.dto.ResponseObject;
 import com.fpt.job5project.service.IIndustryService;
-import com.fpt.job5project.service.IJobsIndustriesService;
+//import com.fpt.job5project.service.IJobsIndustriesService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -18,7 +18,7 @@ import java.util.List;
 @RequestMapping("api/industry")
 public class IndustryController {
     IIndustryService iIndustryService;
-    IJobsIndustriesService iJobsIndustriesService;
+//    IJobsIndustriesService iJobsIndustriesService;
     @GetMapping()
     public ResponseObject<List<IndustryDTO>> listIndustrys() {
 
@@ -46,9 +46,16 @@ public class IndustryController {
     public ResponseObject<String> deleteJobDescription(@PathVariable("id") Long id) {
 
         ResponseObject<String> responseObject = new ResponseObject<>();
-        iJobsIndustriesService.deleteIndustryJobByIndustryId(id);
+//        iJobsIndustriesService.deleteIndustryJobByIndustryId(id);
         iIndustryService.deleteIndustry(id);
         responseObject.setMessage("Job Description has been deleted");
         return responseObject;
+    }
+
+    @GetMapping("/{industryId}")
+    ResponseObject<IndustryDTO> getIndustry(@PathVariable("industryId") long industryId) {
+        return ResponseObject.<IndustryDTO>builder()
+                .data(iIndustryService.getIndustryID(industryId))
+                .build();
     }
 }

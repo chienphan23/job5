@@ -41,7 +41,7 @@ export const Login = () => {
                     </div>
 
                     <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-                        <h2 className='text-center mb-4'>Đăng nhập</h2>
+                        <h2 className='text-center mb-4 main-color-bold' style={{fontWeight: "bold"}}>Đăng nhập</h2>
                         <form onSubmit={onSubmitLogin}>
                         <div className="form-outline mb-4">
                             <label className="form-label" htmlFor="form2Example17">Tài khoản</label>
@@ -49,7 +49,7 @@ export const Login = () => {
                         </div>
 
                         <div className="form-outline mb-4" style={{position: "relative"}}>
-                            <label className="form-label" htmlFor="form2Example27">Mật khẩu</label>
+                            <label className="form-label " htmlFor="form2Example27">Mật khẩu</label>
                             <input onChange={(e) => onChangePassword(e)} type={isHidden ? "password" : "text"} id="form2Example27" className="form-control form-control-lg" />
                             <i style={{ padding: "0 10px", flex: "1", position: "absolute", top: "57.5%" , right: "4px"}} onClick={() => setIsHidden(!isHidden)}>
               <FontAwesomeIcon
@@ -65,13 +65,13 @@ export const Login = () => {
 
                         <div className="d-flex justify-content-around align-items-center mb-4">
                             <div className="form-check">
-                            <Link to={"/register"} style={{fontWeight: "600"}}>Bạn chưa có tài khoản?</Link>
+                            <Link to={"/register"} className='main-color-bold' style={{fontWeight: "600"}}>Bạn chưa có tài khoản?</Link>
 
                             </div>
-                            <Link to={"/forgotPassword"} style={{fontWeight: "600"}}>Quên mật khẩu?</Link>
+                            <Link to={"/forgotPassword"} className='main-color-bold' style={{fontWeight: "600"}}>Quên mật khẩu?</Link>
                         </div>
 
-                        <button type="submit" className="btn btn-primary btn-lg btn-block" style={{fontSize: "16px", fontWeight: "700"}}>Đăng nhập</button>
+                        <button type="submit" className=" main-background-bold text-white" style={{padding: "18px 0",borderRadius: "4px",width: "100%", border: "none",fontSize: "16px", fontWeight: "700"}}>Đăng nhập</button>
 
                         {/* <div className="divider d-flex align-items-center my-4">
                             <p className="text-center fw-bold mx-3 mb-0 text-muted">OR</p>

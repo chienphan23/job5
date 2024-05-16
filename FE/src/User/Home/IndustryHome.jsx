@@ -1,8 +1,15 @@
+import { useGetIndustriesForHome } from "./HomeAPI/useGetIndustriesForHome";
 import { IndustryCard } from "./HomeUI/IndustryCard";
+import {LoadingPage} from "../../UI/LoadingPage" 
+import { Link } from "react-router-dom";
 const mainColor = "#7ed9e7";
 export const IndustryHome = () => {
+  const {listIndustries, isLoading} = useGetIndustriesForHome()
+
+  if(isLoading) return <LoadingPage/>
   return (
     <>
+    {console.log(listIndustries)}
       <section
         className="section-main mt-5"
         style={{ backgroundColor: `${mainColor}` }}
@@ -23,9 +30,12 @@ export const IndustryHome = () => {
           </div>
 
           <div className="row mt-5 row-gap">
-            <IndustryCard/>
-            <IndustryCard/>
-            <IndustryCard/>
+            
+            {listIndustries?.data?.map((industry, index) => 
+            <Link style={{display: "block"}} className="col-lg-4 main-color-bold" to={`/search-page?provinceParam=''&minSalaryParam=0&maxSalaryParam=0&industryParam=${industry.industryId}&experienceParam=0&searchKeyParam=''&typeParam=0`}>
+               <IndustryCard industry={industry} key={index}/>
+              </Link> 
+            )}
           </div>
         </div>
       </section>

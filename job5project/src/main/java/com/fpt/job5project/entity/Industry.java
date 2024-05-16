@@ -1,17 +1,14 @@
 package com.fpt.job5project.entity;
 
+import jakarta.persistence.*;
 import org.hibernate.annotations.Nationalized;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -28,5 +25,8 @@ public class Industry {
     @Nationalized
     @Column(name = "industryname")
     private String industryName;
+
+    @ManyToMany(mappedBy = "industries")
+    private Set<Job> jobs;
 
 }

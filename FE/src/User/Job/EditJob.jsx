@@ -91,12 +91,10 @@ export const EditJob = () => {
        
         
         let arrayDescription = jobDescription && jobDescription.split("\n");
-        console.log("alo")
         let arrayBenefit = jobBenefit && jobBenefit.split("\n");
         let arrayRequirement = jobRequirement && jobRequirement.split("\n");
         const formdataIndustry = new FormData();
         formdataIndustry.append("arrayIndustryIds", arrayIndustryId)
-        console.log("alo" + idJob)
         const result = await updateJob({idJob,formdata, arrayDescription, arrayBenefit,arrayRequirement, arrayIndustryId})
         if(result.status === 200){
             setName("")
@@ -225,7 +223,7 @@ export const EditJob = () => {
                     </div>
                     
                     <JobInformation label={"Mô tả công việc"} inputValue={jobDescription} onChangeFns={handleDescriptionChange}/>
-                    <JobInformation label={"Yêu cần ứng viên"} inputValue={jobRequirement} onChangeFns={handleRequirementChange}/>
+                    <JobInformation label={"Yêu cầu ứng viên"} inputValue={jobRequirement} onChangeFns={handleRequirementChange}/>
                     <JobInformation label={"Lợi ích"} inputValue={jobBenefit} onChangeFns={handleBenefitChange}/>
                     
 

@@ -3,7 +3,7 @@ import {LoadingPage} from "../../UI/LoadingPage"
 import { JobCard } from "./HomeUI/JobCard"
 
 export const ListJobHome = () => {
-  const {listJobs, isLoading} = useGetTopJobForHome(6)
+  const {listJobs, isLoading} = useGetTopJobForHome(9)
   if(isLoading) return <LoadingPage/>
     return(
         <>

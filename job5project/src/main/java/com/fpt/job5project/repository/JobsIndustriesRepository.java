@@ -1,6 +1,8 @@
 package com.fpt.job5project.repository;
 
 import com.fpt.job5project.Model.JobsIndustries;
+import com.fpt.job5project.dto.QuantityJobDTO;
+import com.fpt.job5project.entity.Job;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -11,7 +13,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface JobsIndustriesRepository extends JpaRepository<JobsIndustries, Long> {
+public interface JobsIndustriesRepository extends JpaRepository<Job, Long>{
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO jobs_industries (industries_industryid, job_jobid) VALUES (:industryId, :jobId)", nativeQuery = true)
@@ -23,6 +25,9 @@ public interface JobsIndustriesRepository extends JpaRepository<JobsIndustries, 
 
     @Query(value = "SELECT * FROM jobs_industries WHERE job_jobid = :jobId", nativeQuery = true)
     public List<JobsIndustries> findIndustriesByJobId(@Param("jobId") long jobId);
+
+    @Query(value = "exec quantityJobOfIndustryId",  nativeQuery = true)
+    public List<Object[]> quantityJobOfIndustryId();
 
     @Modifying
     @Transactional

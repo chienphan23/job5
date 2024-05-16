@@ -8,7 +8,7 @@ export const JobCard = ({job}) => {
         <>
         <div className="col-lg-4 col-sm-6 ">
         <Link to={`/job/${job.jobId}`} >
-            <div style={{backgroundColor: "#d1f8ff", borderRadius: "8px"}} className="card-hover">
+            <div style={{backgroundColor: "#d1f8ff", borderRadius: "8px", boxSizing: "border-box"}} className="card-hover">
               <div style={{alignItems: "center", display: "flex"}}>
                 <img
                   className="card-img-top col-lg-3 p-2"

@@ -1,18 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import { JobCard } from "./HomeUI/JobCard";
-import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { ProvinceNameSelect } from "../../UI/ProvinceNameSelect"
 import { useEffect, useState } from "react";
 import { ExperienceSelect } from "./HomeUI/ExperienceSelect";
 import { SalarySelect } from "./HomeUI/SalarySelect";
-import { IndustrySelect } from "../../UI/IndustrySelect";
 import { useGetIndustry } from "../../API/useGetIndustry";
-import { PageNotFound } from "../../UI/PageNotFound";
 import { IndustryHomeSelect } from "../../UI/IndustryHomeSelect";
-import { useQueryClient } from "@tanstack/react-query";
 import { JobTypeSelect } from "../../UI/JobTypeSelect";
-const supColor = "#f6f6f6";
+import { LoadingPage } from "../../UI/LoadingPage";
 
 export const SearchJobHome = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -49,7 +45,7 @@ export const SearchJobHome = () => {
 
   }, [location.pathname, path, searchParams]);
 
-  if (isLoading) return <PageNotFound />
+  if (isLoading) return <LoadingPage />
   return (
     <div>
 

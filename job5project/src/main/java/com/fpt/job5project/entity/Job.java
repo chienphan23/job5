@@ -6,18 +6,9 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import jakarta.persistence.*;
 import org.hibernate.annotations.Nationalized;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -91,6 +82,11 @@ public class Job {
     private String location;
 
     @ManyToMany
+    @JoinTable(
+            name = "jobs_industries",
+            joinColumns = @JoinColumn(name = "job_jobid"),
+            inverseJoinColumns = @JoinColumn(name = "industries_industryid")
+    )
     private Set<Industry> industries = new LinkedHashSet<>();
 
     @Column(name = "isexpired")

@@ -1,6 +1,7 @@
 package com.fpt.job5project.controller;
 
 import com.fpt.job5project.Model.JobsIndustries;
+import com.fpt.job5project.dto.QuantityJobDTO;
 import com.fpt.job5project.dto.ResponseObject;
 import com.fpt.job5project.service.IJobsIndustriesService;
 import lombok.AccessLevel;
@@ -47,6 +48,14 @@ public class JobsIndustriesController {
         ResponseObject<String> responseObject = new ResponseObject<>();
         iJobsIndustries.deleteIndustriesByJobId(id);
         responseObject.setMessage("list industries of job has been deleted");
+        return responseObject;
+    }
+    @GetMapping("/quantityJobOfIndustryId")
+    public ResponseObject<List<QuantityJobDTO>> quantityJobOfIndustryId() {
+
+        ResponseObject<List<QuantityJobDTO>> responseObject = new ResponseObject<>();
+        List<QuantityJobDTO> result = iJobsIndustries.quantityJobOfIndustryId();
+        responseObject.setData(result);
         return responseObject;
     }
 }

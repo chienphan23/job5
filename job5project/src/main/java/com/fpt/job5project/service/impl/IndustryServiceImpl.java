@@ -61,4 +61,9 @@ public class IndustryServiceImpl implements IIndustryService {
             industryRepository.deleteById(id);
         }
     }
+    @Override
+    public IndustryDTO getIndustryID(long id) {
+        return industryMapper.toDTO(industryRepository.findById(id)
+                .orElseThrow(() -> new AppException(ErrorCode.USER_EXISTED)));
+    }
 }

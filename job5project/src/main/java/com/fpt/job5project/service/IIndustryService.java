@@ -12,4 +12,5 @@ public interface IIndustryService {
     public IndustryDTO updateIndustry(long id, IndustryDTO newIndustryDTO);
 
     public void deleteIndustry(long id);
+    public IndustryDTO getIndustryID(long id);
 }

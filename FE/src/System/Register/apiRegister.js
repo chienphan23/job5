@@ -8,13 +8,12 @@ export const apiRegister = async (formData, formData2) => {
     formDataLogin.append('userName', formData.get('userName'))
     formDataLogin.append('password', formData.get('password'))
     console.log(user)
-    if(user?.data?.role !== "employer"){
+    // if(user?.data?.role !== "employer"){
         const login = await apiLogin(formDataLogin)
-        console.log(login)
         const expirationDate = new Date();
                 expirationDate.setHours(expirationDate.getHours() + 4);
                 document.cookie = 'AUTH_TOKEN' + "=" + login.token + ";" + expirationDate + ";path=/";
-    }
+    // }
 
     console.log("alo123")
     let emptyFile;
