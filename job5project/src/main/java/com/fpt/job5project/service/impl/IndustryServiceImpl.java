@@ -3,7 +3,6 @@ package com.fpt.job5project.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fpt.job5project.entity.Job;
 import org.springframework.stereotype.Service;
 
 import com.fpt.job5project.dto.IndustryDTO;
@@ -47,7 +46,8 @@ public class IndustryServiceImpl implements IIndustryService {
 
     @Override
     public IndustryDTO updateIndustry(long id, IndustryDTO newIndustryDTO) {
-        Industry foundIndustry = industryRepository.findById(id).orElseThrow(() -> new AppException(ErrorCode.CANDIDATE_NOT_EXIST));
+        Industry foundIndustry = industryRepository.findById(id)
+                .orElseThrow(() -> new AppException(ErrorCode.CANDIDATE_NOT_EXIST));
         industryMapper.updateIndustry(foundIndustry, newIndustryDTO);
         return industryMapper.toDTO(industryRepository.save(foundIndustry));
     }
@@ -60,5 +60,11 @@ public class IndustryServiceImpl implements IIndustryService {
         } else {
             industryRepository.deleteById(id);
         }
+    }
+
+    @Override
+    public IndustryDTO getIndustryID(long id) {
+        return industryMapper.toDTO(industryRepository.findById(id)
+                .orElseThrow(() -> new AppException(ErrorCode.USER_EXISTED)));
     }
 }

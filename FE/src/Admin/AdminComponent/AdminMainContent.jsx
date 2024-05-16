@@ -9,6 +9,8 @@ import DeleteUserModal from "./DeleteUserModal";
 import { useDeleteUser } from "../AdminAPI/use/useDeleteUser";
 import { useBlockUser } from "../AdminAPI/use/useBlockUser";
 import ChartComponent from "./chart/ChartComponent";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const TextField = styled.input`
   height: 32px;
@@ -147,13 +149,14 @@ export const AdminMainContent = () => {
     },
     {
       name: "Trạng thái",
-      selector: (row) =>
-        row.blocked ? (
-          <span className="text-color-danger">Đã bị khóa</span>
-        ) : (
-          <span className="text-color-success">Đang hoạt động</span>
-        ),
+      selector: (row) => row.blocked,
       sortable: true,
+      format: (row) =>
+        row.blocked ? (
+          <span className="badge badge-pill badge-danger">Đã bị khóa</span>
+        ) : (
+          <span className="badge badge-pill badge-success">Đang hoạt động</span>
+        ),
     },
     {
       name: "Lock",
@@ -174,7 +177,7 @@ export const AdminMainContent = () => {
       cell: (row) => (
         <>
           <button
-            className="btn btn-danger"
+            className="btn btn-outline-danger"
             data-toggle="modal"
             data-target="#deleteModal"
             style={{ marginLeft: "10px" }}
@@ -183,7 +186,7 @@ export const AdminMainContent = () => {
               toggleModal(row.userId);
             }}
           >
-            <i className="ti-trash"></i>
+            <FontAwesomeIcon icon={faTrash} />
           </button>
         </>
       ),
@@ -257,7 +260,6 @@ export const AdminMainContent = () => {
               highlightOnHover
               pointerOnHover
             />
-            <ChartComponent />
           </div>
         </div>
       </div>

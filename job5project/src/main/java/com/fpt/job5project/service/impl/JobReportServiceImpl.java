@@ -1,23 +1,22 @@
 package com.fpt.job5project.service.impl;
 
-import com.fpt.job5project.dto.CandidateDTO;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.fpt.job5project.dto.JobReportDTO;
-import com.fpt.job5project.entity.Candidate;
-import com.fpt.job5project.entity.JobInterest;
 import com.fpt.job5project.entity.JobReport;
 import com.fpt.job5project.exception.AppException;
 import com.fpt.job5project.exception.ErrorCode;
 import com.fpt.job5project.mapper.JobReportMapper;
 import com.fpt.job5project.repository.JobReportRepository;
 import com.fpt.job5project.service.IJobReportService;
+
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

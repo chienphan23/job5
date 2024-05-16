@@ -2,9 +2,7 @@ package com.fpt.job5project.controller;
 
 import java.util.List;
 
-import com.fpt.job5project.dto.SearchJobDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fpt.job5project.dto.JobDTO;
 import com.fpt.job5project.dto.ResponseObject;
+import com.fpt.job5project.dto.SearchJobDTO;
 import com.fpt.job5project.service.IJobService;
 
 import lombok.AccessLevel;
@@ -70,16 +69,17 @@ public class JobController {
     }
 
     @GetMapping("/getByEmployer/{id}")
-    public ResponseObject<List<JobDTO>> getByEmployerId(@PathVariable("id") long id){
+    public ResponseObject<List<JobDTO>> getByEmployerId(@PathVariable("id") long id) {
         ResponseObject<List<JobDTO>> responseObject = new ResponseObject<>();
         responseObject.setData(iJobService.getJobByEmployer(id));
-        return  responseObject;
+        return responseObject;
     }
 
     @PostMapping("/searchJob")
     public ResponseObject<List<JobDTO>> resultSearchJob(@ModelAttribute SearchJobDTO searchJobDTO) {
         ResponseObject<List<JobDTO>> responseObject = new ResponseObject<>();
-        responseObject.setData(iJobService.resultSearchJob(searchJobDTO.getIndustryId(), searchJobDTO.getSearchValue(),searchJobDTO.getMinSalary(),searchJobDTO.getMaxSalary(),searchJobDTO.getLocation(), searchJobDTO.getExperience(), searchJobDTO.getTypeJob()));
+        responseObject.setData(iJobService.resultSearchJob(searchJobDTO.getIndustryId(), searchJobDTO.getSearchValue(),
+                searchJobDTO.getMinSalary(), searchJobDTO.getMaxSalary(), searchJobDTO.getLocation()));
         return responseObject;
     }
 }

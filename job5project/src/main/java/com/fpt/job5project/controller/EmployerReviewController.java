@@ -1,16 +1,24 @@
 package com.fpt.job5project.controller;
 
+import java.util.List;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.fpt.job5project.dto.EmployerReviewDTO;
 import com.fpt.job5project.dto.ResponseObject;
 import com.fpt.job5project.service.IEmployerReviewService;
+
 import jakarta.validation.Valid;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -38,9 +46,9 @@ public class EmployerReviewController {
         return responseObject;
     }
 
-
     @PostMapping("/Create")
-    public ResponseObject<EmployerReviewDTO> addEmployerReview(@ModelAttribute @Valid EmployerReviewDTO newApplication) {
+    public ResponseObject<EmployerReviewDTO> addEmployerReview(
+            @ModelAttribute @Valid EmployerReviewDTO newApplication) {
 
         ResponseObject<EmployerReviewDTO> responseObject = new ResponseObject<>();
         responseObject.setData(iEmployerReviewService.addEmployerReview(newApplication));
@@ -57,7 +65,8 @@ public class EmployerReviewController {
     }
 
     @PutMapping("/Update/{id}")
-    public ResponseObject<EmployerReviewDTO> updateEmployerReview(@PathVariable("id") Long id, @ModelAttribute EmployerReviewDTO employerReviewDTO) {
+    public ResponseObject<EmployerReviewDTO> updateEmployerReview(@PathVariable("id") Long id,
+            @ModelAttribute EmployerReviewDTO employerReviewDTO) {
 
         ResponseObject<EmployerReviewDTO> responseObject = new ResponseObject<>();
         responseObject.setData(iEmployerReviewService.updateEmployerReview(id, employerReviewDTO));

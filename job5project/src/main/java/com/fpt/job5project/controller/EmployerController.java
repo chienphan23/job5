@@ -40,7 +40,6 @@ public class EmployerController {
         return responseObject;
     }
 
-
     @PostMapping("/Create")
     public ResponseObject<EmployerDTO> addEmployer(@ModelAttribute @Valid EmployerDTO newEmployer) {
 
@@ -59,8 +58,10 @@ public class EmployerController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseObject<EmployerDTO> updateEmployer(@PathVariable("id") Long id, @ModelAttribute EmployerDTO employerDTO, @ModelAttribute("filePhoto") MultipartFile filePhoto, @ModelAttribute("fileBackground") MultipartFile fileBackground) {
-        System.out.println("alo");
+    public ResponseObject<EmployerDTO> updateEmployer(@PathVariable("id") Long id,
+            @ModelAttribute EmployerDTO employerDTO, @ModelAttribute("filePhoto") MultipartFile filePhoto,
+            @ModelAttribute("fileBackground") MultipartFile fileBackground) {
+
         ResponseObject<EmployerDTO> responseObject = new ResponseObject<>();
         responseObject.setData(iEmployerService.updateEmployer(id, employerDTO, filePhoto, fileBackground));
         return responseObject;

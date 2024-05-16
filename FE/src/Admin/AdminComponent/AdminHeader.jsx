@@ -4,7 +4,7 @@ import { useGetIn4 } from "../../API/useGetIn4";
 import { aliases } from "@fortawesome/free-brands-svg-icons/fa42Group";
 export const AdminHeader = () => {
   const navigate = useNavigate();
-  const { data, isLoading } = useGetIn4();
+  const { user, isLoading } = useGetIn4();
   const onClickLogOut = async () => {
     await apiPostLogOut();
     navigate("/login");
@@ -12,7 +12,7 @@ export const AdminHeader = () => {
   if (isLoading) return <>Loading</>;
   return (
     <>
-      {/* {console.log(data)} */}
+      {console.log(user)}
       <div className="mainheader-area">
         <div className="container">
           <div className="row align-items-center">
@@ -86,26 +86,33 @@ export const AdminHeader = () => {
                   </li>
                 </ul>
               </div>
-              <div className="clearfix d-md-inline-block d-block">
-                <div className="user-profile m-0">
-                  <h4 style={{ fontSize: "16px", paddingRight: "3px" }}>
+
+              <div className="col-sm-16 clearfix">
+                <div
+                  className="user-profile pull-right"
+                  style={{ alignItems: "center", textAlign: "center" }}
+                >
+                  <span
+                    style={{
+                      fontSize: "18px",
+                      paddingRight: "3px",
+                      color: "#fa831d",
+                      fontWeight: "bold",
+                    }}
+                  >
                     Chào
-                  </h4>
+                  </span>
                   <h4
                     className="user-name dropdown-toggle"
                     data-toggle="dropdown"
+                    aria-expanded="false"
                   >
-                    {data?.data?.userName}
-                    <i className="fa fa-angle-down"></i>
+                    {user.data.userName} <i className="fa fa-angle-down"></i>
                   </h4>
-
-                  <div
-                    className="dropdown-menu"
-                    style={{ border: "1px solid #ccc" }}
-                  >
-                    <button className="dropdown-item" onClick={onClickLogOut}>
-                      Đăng xuất
-                    </button>
+                  <div className="dropdown-menu">
+                    <a className="dropdown-item" onClick={onClickLogOut}>
+                      Log Out
+                    </a>
                   </div>
                 </div>
               </div>

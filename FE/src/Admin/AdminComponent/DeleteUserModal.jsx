@@ -69,7 +69,7 @@ const DeleteUserModal = ({
                 <button
                   data-dismiss="modal"
                   style={{ padding: "6px 24px", marginRight: "32px" }}
-                  className="btn btn-secondary"
+                  className="btn btn-outline-secondary"
                   onClick={toggleModal}
                 >
                   Hủy
@@ -78,7 +78,7 @@ const DeleteUserModal = ({
                   data-dismiss="modal"
                   onClick={handleConfirmDelete}
                   style={{ padding: "6px 24px", marginLeft: "32px" }}
-                  className="btn btn-danger"
+                  className="btn btn-outline-danger"
                 >
                   Xóa
                 </button>
